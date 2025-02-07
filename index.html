@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Collection Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind dark mode toggle functionality
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
+  </script>
+  <style>
+    /* Hover Effect for Cards */
+    .movie-card:hover {
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Custom Search Bar Style */
+    .search-bar:focus {
+      outline: none;
+      border-color: #4F46E5; /* Purple accent on focus */
+    }
+
+    /* Footer Style */
+    .footer {
+      background-color: #1E3A8A;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 dark:text-white">
+  <div class="flex h-screen flex-col">
+    <div class="flex flex-grow">
+      <!-- Sidebar -->
+      <div class="bg-blue-800 w-64 p-6 text-white shadow-lg">
+        <h1 class="text-2xl font-semibold mb-8">Movie Dashboard</h1>
+        <nav>
+          <ul>
+            <li class="mb-4">
+              <a href="#" class="hover:bg-blue-700 p-2 block rounded">Dashboard</a>
+            </li>
+            <li class="mb-4">
+              <a href="#movies" class="hover:bg-blue-700 p-2 block rounded">Movies</a>
+            </li>
+            <li class="mb-4">
+              <a href="#ratings" class="hover:bg-blue-700 p-2 block rounded">Ratings</a>
+            </li>
+            <li class="mb-4">
+              <a href="#charts" class="hover:bg-blue-700 p-2 block rounded">Statistics</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex-1 p-6">
+        <!-- Top Bar -->
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-3xl font-semibold">Welcome to Your Movie Dashboard</h2>
+          <div class="flex items-center space-x-4">
+            <!-- Dark Mode Toggle -->
+            <button onclick="toggleDarkMode()" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
+              Dark Mode
+            </button>
+            <!-- Search Bar -->
+            <input type="text" placeholder="Search Movies..." class="search-bar w-64 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white p-3 rounded-lg shadow-md">
+          </div>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="flex space-x-6 mb-6">
+          <div>
+            <label for="genre" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Filter by Genre</label>
+            <select id="genre" class="w-48 mt-1 p-2 border rounded-md bg-gray-100 dark:bg-gray-800 dark:text-white">
+              <option value="all">All Genres</option>
+              <option value="action">Action</option>
+              <option value="drama">Drama</option>
+              <option value="comedy">Comedy</option>
+              <option value="horror">Horror</option>
+            </select>
+          </div>
+          <div>
+            <label for="rating" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Filter by Rating</label>
+            <select id="rating" class="w-48 mt-1 p-2 border rounded-md bg-gray-100 dark:bg-gray-800 dark:text-white">
+              <option value="all">All Ratings</option>
+              <option value="5">5 Stars</option>
+              <option value="4">4 Stars</option>
+              <option value="3">3 Stars</option>
+              <option value="2">2 Stars</option>
+              <option value="1">1 Star</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Movies Section -->
+        <section id="movies" class="mb-8">
+          <h3 class="text-2xl font-semibold mb-4">Your Movie Collection</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Movie Card 1 -->
+            <div class="movie-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+              <img src="assets/zGINvGjdlO6TJRu9wESQvWlOKVT-0-2000-0-3000-crop.jpg" alt="Movie Poster" class="rounded-md mb-4">
+              <h4 class="text-xl font-semibold">The Shawshank Redemption</h4>
+              <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">1994 | Drama</p>
+              <p class="text-lg">Rating: ★★★★★</p>
+              <a href="https://letterboxd.com/film/the-shawshank-redemption/" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded mt-4 block text-center">View Details</a>
+            </div>
+
+            <!-- Movie Card 2 -->
+            <div class="movie-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+              <img src="assets/oefdD26aey8GPdx7Rm45PNncJdU-0-2000-0-3000-crop.jpg" alt="Movie Poster" class="rounded-md mb-4">
+              <h4 class="text-xl font-semibold">The Dark Knight</h4>
+              <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">2008 | Action, Crime, Drama</p>
+              <p class="text-lg">Rating: ★★★★☆</p>
+              <a href="https://letterboxd.com/film/the-dark-knight/" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded mt-4 block text-center">View Details</a>
+            </div>
+
+            <!-- Movie Card 3 -->
+            <div class="movie-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+              <img src="assets/inception-0-2000-0-3000-crop.jpg" alt="Movie Poster" class="rounded-md mb-4">
+              <h4 class="text-xl font-semibold">Inception</h4>
+              <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">2010 | Action, Adventure, Sci-Fi</p>
+              <p class="text-lg">Rating: ★★★★☆</p>
+              <a href="https://letterboxd.com/film/inception/" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded mt-4 block text-center">View Details</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Movie Ratings Section -->
+        <section id="ratings" class="mt-8">
+          <h3 class="text-2xl font-semibold mb-4">Your Movie Ratings Overview</h3>
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <h4 class="text-xl font-semibold mb-4">Average Rating: 4.2/5</h4>
+
+            <!-- Rating Distribution -->
+            <div class="space-y-4">
+              <div class="flex items-center">
+                <span class="w-32">5 Stars:</span>
+                <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-4">
+                  <div class="bg-blue-600 h-4 rounded-full" style="width: 60%"></div>
+                </div>
+                <span class="ml-2">60%</span>
+              </div>
+              <div class="flex items-center">
+                <span class="w-32">4 Stars:</span>
+                <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-4">
+                  <div class="bg-blue-600 h-4 rounded-full" style="width: 30%"></div>
+                </div>
+                <span class="ml-2">30%</span>
+              </div>
+              <div class="flex items-center">
+                <span class="w-32">3 Stars:</span>
+                <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-4">
+                  <div class="bg-blue-600 h-4 rounded-full" style="width: 10%"></div>
+                </div>
+                <span class="ml-2">10%</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Statistics Section (Bar Chart) -->
+        <section id="charts" class="mt-8">
+          <h3 class="text-2xl font-semibold mb-4">Movie Genre Statistics</h3>
+          <!-- Bar Chart -->
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <canvas id="genreChart" width="400" height="400"></canvas>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 Movie Collection Dashboard. All rights reserved <a href="https://letterboxd.com/">TO letterboxd</a></p>
+    </footer>
+  </div>
+
+  <!-- Chart.js (for Bar Chart) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('genreChart').getContext('2d');
+    const genreChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Action', 'Drama', 'Comedy', 'Horror'],
+        datasets: [{
+          label: 'Movies per Genre',
+          data: [30, 40, 20, 10],
+          backgroundColor: '#4F46E5',
+          borderColor: '#4F46E5',
+          borderWidth: 1,
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
